@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./runner.css";
+import "./tutorial.css";
 
 export const metadata: Metadata = {
   title: "Proofopolis - Run the chain. Build the city.",
