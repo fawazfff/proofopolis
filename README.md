@@ -1,18 +1,18 @@
-# Proofopolis
+# Proof or Bluff
 
-**Run the chain. Build the city.** Proofopolis is a fast three-lane arcade runner where verified Ethereum activity becomes a game pass and the player's reward becomes part of a living city on Creditcoin.
+**Every wallet has a story. Someone is lying.** Proof or Bluff is a social-deduction game where rivals make claims about their Ethereum history and Attestcoin reveals the truth on Creditcoin.
 
 Built for **BUIDL CTC 2026 Fall - Gaming Track**.
 
 ## How to play
 
-1. Press **Play Free Demo**, then **Verify Pass & Start Run**.
-2. Move between three lanes with **Left/Right arrows** or **A/D**.
-3. Jump with **Up**, **W**, or **Space**.
-4. Collect cyan proof shards and avoid red corrupted blocks.
-5. Reach the city gate at **650m** to unlock a verified landmark.
+1. Read a rival's claim about an Ethereum transaction.
+2. Inspect the visible method and receipt fragment.
+3. Choose **Believe** or **Call Bluff**.
+4. Watch Attestcoin verify and decode the cross-chain receipt.
+5. Correct reads win chips; wrong reads cost a heart.
 
-On phones, use the three large controls at the bottom of the screen. The playable demo needs no wallet. Its verification sequence is clearly labelled as a demo; the live proof-import route and smart-contract integration remain in the project for testnet use.
+The solo demo needs no wallet and contains three fast cases. Its proof sequence is clearly labelled as a demo; the live proof-import route and smart-contract integration remain in the project for testnet use.
 
 ## Attestcoin integration
 
