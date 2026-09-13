@@ -19,16 +19,16 @@ function Home({ play }: { play: () => void }) {
       <div className="runner-home__shade" />
       <nav><Logo /><span className="live-chip"><i /> BUILT FOR CC3 TESTNET</span></nav>
       <section className="runner-home__copy">
-        <p className="runner-eyebrow">A FAST ARCADE RUNNER POWERED BY ATTESTCOIN</p>
-        <h1>RUN THE CHAIN.<br /><em>BUILD THE CITY.</em></h1>
-        <p>Dodge corrupted blocks, collect proof shards, and turn verified Ethereum history into a living city on Creditcoin.</p>
-        <button className="runner-cta" onClick={play}>&#9654; PLAY FREE DEMO</button>
-        <small>No wallet needed for demo &middot; Arrow keys or touch</small>
+        <p className="runner-eyebrow">A SIMPLE THREE-LANE RUNNER</p>
+        <h1>DODGE RED.<br /><em>GRAB BLUE.</em></h1>
+        <p>You are the glowing diamond. Move across three lanes, avoid every red block, and survive until 650 metres.</p>
+        <button className="runner-cta" onClick={play}>&#9654; TEACH ME &amp; PLAY</button>
+        <small>No wallet needed &middot; Takes about 20 seconds</small>
       </section>
       <section className="runner-home__steps">
-        <div><b>1</b><span><strong>PROVE</strong>Your Ethereum action</span></div>
-        <div><b>2</b><span><strong>RUN</strong>Dodge, jump, collect</span></div>
-        <div><b>3</b><span><strong>BUILD</strong>Unlock your landmark</span></div>
+        <div><b className="legend-player">&#9670;</b><span><strong>THIS IS YOU</strong>The glowing diamond</span></div>
+        <div><b className="legend-danger">!</b><span><strong>RED IS BAD</strong>Move or jump away</span></div>
+        <div><b className="legend-shard">&#9671;</b><span><strong>BLUE IS GOOD</strong>Collect for points</span></div>
       </section>
     </main>
   );
@@ -140,15 +140,20 @@ export default function RunnerGame() {
     <main className="runner-modal-page">
       <Logo />
       <section className="how-card">
-        <p className="runner-eyebrow">HOW TO PLAY</p><h1>Three lanes. One goal.</h1>
-        <div className="control-demo"><button>&larr;</button><span className="mini-runner">&#9670;</span><button>&rarr;</button></div>
-        <div className="how-grid">
-          <div><span>&harr;</span><b>MOVE</b><small>Left/right arrows or A/D</small></div>
-          <div><span>&uarr;</span><b>JUMP</b><small>Up arrow, W, or Space</small></div>
-          <div><span>&#9671;</span><b>COLLECT</b><small>Grab proof shards</small></div>
+        <p className="runner-eyebrow">HOW TO PLAY</p><h1>Stay alive to 650m.</h1>
+        <div className="lesson-road">
+          <span className="lesson-shard"><b>&#9671;</b><small>COLLECT</small></span>
+          <span className="lesson-block"><b>!</b><small>AVOID</small></span>
+          <span className="lesson-player"><small>YOU</small><b>&#9670;</b></span>
         </div>
-        <p className="warning-line"><b>AVOID</b> red corrupted blocks. Reach the city gate to earn a verified building.</p>
-        <button className="runner-cta" onClick={beginVerification}>VERIFY PASS &amp; START RUN</button>
+        <div className="control-demo"><button>&larr;</button><span>MOVE YOUR DIAMOND</span><button>&rarr;</button></div>
+        <div className="how-grid">
+          <div><span>1</span><b>MOVE</b><small>Left/right arrows or A/D</small></div>
+          <div><span>2</span><b>JUMP</b><small>Up arrow, W, or Space</small></div>
+          <div><span>3</span><b>WIN</b><small>Reach 650m without crashing</small></div>
+        </div>
+        <p className="warning-line"><b>ONE RULE:</b> never touch a red block. Move sideways or jump over it.</p>
+        <button className="runner-cta" onClick={beginVerification}>I UNDERSTAND - START RUN</button>
         <button className="back-link" onClick={() => setScene("home")}>&larr; Back</button>
       </section>
     </main>
@@ -172,9 +177,10 @@ export default function RunnerGame() {
         <div className="city-gate"><span>PROOFOPOLIS</span><b>&#9671;</b></div>
         <div className="runner-road"><i /><i />
           {items.map((item) => <span key={item.id} className={`runner-item runner-item--${item.kind}`} style={{ "--lane": item.lane, "--depth": item.depth } as React.CSSProperties}>{item.kind === "shard" ? "\u25C7" : "!"}</span>)}
-          <span className={`runner-player${jumping ? " runner-player--jump" : ""}`} style={{ "--player-lane": lane } as React.CSSProperties}><i>&#9670;</i><b /></span>
+          <span className={`runner-player${jumping ? " runner-player--jump" : ""}`} style={{ "--player-lane": lane } as React.CSSProperties}><small>YOU</small><i>&#9670;</i><b /></span>
         </div>
       </div>
+      {distance < 70 && <div className="runner-coach"><b>YOU ARE THE GLOWING DIAMOND</b><span>RED = DANGER</span><span>BLUE = COLLECT</span></div>}
       <div className="runner-help"><span>&larr; &rarr; MOVE</span><span>&uarr; / SPACE JUMP</span><span>&#9671; COLLECT</span></div>
       <div className="touch-controls"><button aria-label="Move left" onPointerDown={() => shift(-1)}>&larr;</button><button aria-label="Jump" onPointerDown={jump}>&uarr;</button><button aria-label="Move right" onPointerDown={() => shift(1)}>&rarr;</button></div>
     </main>
