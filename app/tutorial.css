@@ -1,0 +1,15 @@
+.runner-home__steps .legend-danger{color:var(--run-red)}
+.runner-home__steps .legend-shard{color:#6fffe2}
+.runner-home__steps .legend-player{color:white;text-shadow:0 0 14px var(--run-cyan)}
+.control-demo>span{font-size:10px;font-weight:900;letter-spacing:.12em;color:#b7c7d5}
+.lesson-road{height:145px;position:relative;margin:0 auto 18px;border:2px solid #4ff5d143;border-radius:12px;background:linear-gradient(90deg,transparent 32.7%,#ffffff28 33%,#ffffff28 33.4%,transparent 33.7%,transparent 66%,#ffffff28 66.3%,#ffffff28 66.7%,transparent 67%);overflow:hidden}
+.lesson-road>span{position:absolute;display:grid;place-items:center}
+.lesson-road small{font-size:8px;font-weight:1000;letter-spacing:.12em}
+.lesson-player{bottom:7px;left:16%;color:white}.lesson-player b{font-size:38px;color:#c9fff5;text-shadow:0 0 18px var(--run-cyan)}
+.lesson-block{top:25px;left:48%;width:48px;height:45px;border-radius:7px;background:var(--run-red);color:white;box-shadow:0 0 18px #ff466570}.lesson-block small{position:absolute;top:-17px;color:#ff8597}
+.lesson-shard{top:30px;right:14%;color:var(--run-cyan)}.lesson-shard b{font-size:38px;text-shadow:0 0 14px var(--run-cyan)}
+.runner-player small{position:absolute;top:-17px;font-size:9px;font-weight:1000;letter-spacing:.14em;color:white;background:#05101bc7;padding:3px 7px;border-radius:999px}
+.runner-coach{position:absolute;z-index:9;top:98px;left:50%;transform:translateX(-50%);display:flex;gap:8px;align-items:center;padding:9px 13px;border-radius:999px;background:#05101be8;border:1px solid #ffffff24;font-size:9px;white-space:nowrap}
+.runner-coach b{color:white}.runner-coach span:first-of-type{color:#ff7188}.runner-coach span:last-child{color:#63f3d5}
+@media(max-width:700px){.runner-home__copy{padding-top:9vh}.runner-home h1{font-size:48px}.how-card{padding:22px 14px}.how-card h1{font-size:34px;margin-bottom:15px}.lesson-road{height:115px}.how-grid div{padding:8px}.runner-coach{top:88px;font-size:7px;gap:6px;padding:7px}}
+
