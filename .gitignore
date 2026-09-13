@@ -26,3 +26,5 @@ Thumbs.db
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# package-lock.json is intentionally tracked for reproducible CI and Vercel builds
