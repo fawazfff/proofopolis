@@ -1,6 +1,5 @@
-import ProofOrBluffGame from "@/components/ProofOrBluffGame";
+import ProofopolisGame from "@/components/ProofopolisGame";
 
 export default function Home() {
-  return <ProofOrBluffGame />;
+  return <ProofopolisGame />;
 }
-
