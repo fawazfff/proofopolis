@@ -1,6 +1,6 @@
-import RunnerGame from "@/components/RunnerGame";
+import ProofOrBluffGame from "@/components/ProofOrBluffGame";
 
 export default function Home() {
-  return <RunnerGame />;
+  return <ProofOrBluffGame />;
 }
 
