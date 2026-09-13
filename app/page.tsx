@@ -1,5 +1,5 @@
-import ProofopolisGame from "@/components/ProofopolisGame";
+import ProofopolisGameV2 from "@/components/ProofopolisGameV2";
 
 export default function Home() {
-  return <ProofopolisGame />;
+  return <ProofopolisGameV2 />;
 }
