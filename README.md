@@ -1,22 +1,22 @@
 # Proofopolis
 
-**Your wallet is your deck.** Proofopolis is an isometric city-building puzzle where players turn Attestcoin-verified Ethereum activity into strategic building tiles on Creditcoin.
+**Run the chain. Build the city.** Proofopolis is a fast three-lane arcade runner where verified Ethereum activity becomes a game pass and the player's reward becomes part of a living city on Creditcoin.
 
-Built for **BUIDL CTC 2026 Fall · Gaming Track**.
+Built for **BUIDL CTC 2026 Fall - Gaming Track**.
 
-## Playable loop
+## How to play
 
-1. Prove a successful Ethereum Sepolia game action.
-2. Attestcoin verifies inclusion and continuity on Creditcoin CC3.
-3. The source event unlocks a Market, Gallery, or Council tile.
-4. Place it on the 5×5 city board; adjacent landmarks earn bonuses.
-5. Every transaction can be consumed only once.
+1. Press **Play Free Demo**, then **Verify Pass & Start Run**.
+2. Move between three lanes with **Left/Right arrows** or **A/D**.
+3. Jump with **Up**, **W**, or **Space**.
+4. Collect cyan proof shards and avoid red corrupted blocks.
+5. Reach the city gate at **650m** to unlock a verified landmark.
 
-The deployed web demo includes a fast judge-friendly proof simulation and a live Sepolia proof importer. The simulation is clearly labelled and never substitutes for the production contract path.
+On phones, use the three large controls at the bottom of the screen. The playable demo needs no wallet. Its verification sequence is clearly labelled as a demo; the live proof-import route and smart-contract integration remain in the project for testnet use.
 
 ## Attestcoin integration
 
-`Proofopolis.sol` calls the native query verifier at `0x0000000000000000000000000000000000000FD2` through the current `@gluwa/asc-contracts` interface. After verification it decodes the exact proven transaction and receipt with `EvmV1Decoder`, then enforces:
+`Proofopolis.sol` calls the native query verifier at `0x0000000000000000000000000000000000000FD2` through the current `@gluwa/asc-contracts` interface. After verification it decodes the proven transaction and receipt with `EvmV1Decoder`, then enforces:
 
 - Creditcoin chain key `1` (Ethereum Sepolia)
 - successful source receipt
@@ -25,7 +25,7 @@ The deployed web demo includes a fast judge-friendly proof simulation and a live
 - expected event signature and indexed player
 - replay protection from `(chainKey, blockHeight, txIndex)`
 
-Only then does Creditcoin create the game tile. See [the full integration notes](docs/ATTESTCOIN_INTEGRATION.md).
+Only then does Creditcoin issue the one-use game reward. See [the full integration notes](docs/ATTESTCOIN_INTEGRATION.md).
 
 ## Run locally
 
@@ -40,13 +40,14 @@ Copy `.env.example` to `.env.local` to configure infrastructure and the deployed
 
 ## Project structure
 
-- `app/` — Next.js game and proof-builder endpoint
-- `components/` — playable isometric city interface
-- `contracts/src/` — Sepolia source and CC3 game contracts
-- `lib/` — deterministic game/scoring logic and contract ABI
-- `tests/` — gameplay tests
-- `docs/` — protocol architecture and runbook
+- `app/` - Next.js runner and proof-builder endpoint
+- `components/RunnerGame.tsx` - scene flow, input, and fixed-timestep game loop
+- `contracts/src/` - Sepolia source and CC3 game contracts
+- `lib/runner.ts` - deterministic lane and collision logic
+- `tests/` - gameplay tests
+- `docs/` - protocol architecture and testnet runbook
 
 ## Status
 
 Hackathon testnet prototype. Not audited; no real-value assets.
+
