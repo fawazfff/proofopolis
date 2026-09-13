@@ -1,31 +1,60 @@
-# Proof or Bluff
+# Proofopolis
 
-**Every wallet has a story. Someone is lying.** Proof or Bluff is a social-deduction game where rivals make claims about their Ethereum history and Attestcoin reveals the truth on Creditcoin.
+**Your wallet is your deck.**
 
-Built for **BUIDL CTC 2026 Fall - Gaming Track**.
+Proofopolis is an isometric city-building puzzle where players transform cryptographically verified Ethereum activity into strategic building tiles on Creditcoin.
 
-## How to play
+Built for **BUIDL CTC 2026 Fall, Gaming Track**.
 
-1. Read a rival's claim about an Ethereum transaction.
-2. Inspect the visible method and receipt fragment.
-3. Choose **Believe** or **Call Bluff**.
-4. Watch Attestcoin verify and decode the cross-chain receipt.
-5. Correct reads win chips; wrong reads cost a heart.
+## The rule
 
-The solo demo needs no wallet and contains three fast cases. Its proof sequence is clearly labelled as a demo; the live proof-import route and smart-contract integration remain in the project for testnet use.
+A source-chain transaction does not become a building just because the frontend says it exists. The Creditcoin game contract must accept its Attestcoin proof first.
+
+**No valid proof = no building.**
+
+That makes Attestcoin part of the game rule itself rather than a decorative integration.
+
+## Game loop
+
+1. Connect a wallet and choose an Ethereum Sepolia transaction.
+2. Build an Attestcoin proof for that transaction.
+3. Submit the proof to the Proofopolis contract on Creditcoin.
+4. The contract verifies and decodes the proven transaction and receipt.
+5. A valid, successful, authorized and unused action unlocks a city tile.
+6. Place the tile on the 5 x 5 city board.
+7. Neighboring buildings create score bonuses.
+8. Replaying the same proof is rejected.
+
+The MVP focuses on three building categories and a small board so the proof-to-game loop stays obvious in a one-minute demo.
 
 ## Attestcoin integration
 
-`Proofopolis.sol` calls the native query verifier at `0x0000000000000000000000000000000000000FD2` through the current `@gluwa/asc-contracts` interface. After verification it decodes the proven transaction and receipt with `EvmV1Decoder`, then enforces:
+`contracts/src/Proofopolis.sol` uses the native query verifier through the current `@gluwa/asc-contracts` interface. After verification, it decodes the proven EVM transaction and receipt and checks:
 
-- Creditcoin chain key `1` (Ethereum Sepolia)
+- Sepolia source chain key
 - successful source receipt
-- source transaction sender equals the player
-- allowlisted `SeedActions` emitter
+- source transaction sender matches the player
+- allowlisted source contract
 - expected event signature and indexed player
-- replay protection from `(chainKey, blockHeight, txIndex)`
+- replay protection derived from the proven transaction position
 
-Only then does Creditcoin issue the one-use game reward. See [the full integration notes](docs/ATTESTCOIN_INTEGRATION.md).
+Only after those checks does Creditcoin mint a one-use game tile.
+
+The web proof endpoint uses `@gluwa/usc-sdk` to request proof data for a supplied transaction hash. See `docs/ATTESTCOIN_INTEGRATION.md` for the technical path.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Ethereum Sepolia transaction] --> B[Attestcoin proof builder]
+    B --> C[Creditcoin native verifier]
+    C --> D{Proof valid?}
+    D -- No --> E[Reject / ghost building]
+    D -- Yes --> F[Decode transaction + receipt]
+    F --> G[Unlock one-use building tile]
+    G --> H[Place on 5 x 5 city]
+    H --> I[Adjacency score]
+```
 
 ## Run locally
 
@@ -36,18 +65,19 @@ npm run contracts:compile
 npm run dev
 ```
 
-Copy `.env.example` to `.env.local` to configure infrastructure and the deployed CC3 contract address.
+Copy `.env.example` to `.env.local` to configure the proof-builder infrastructure and deployed CC3 contract address.
 
 ## Project structure
 
-- `app/` - Next.js runner and proof-builder endpoint
-- `components/RunnerGame.tsx` - scene flow, input, and fixed-timestep game loop
-- `contracts/src/` - Sepolia source and CC3 game contracts
-- `lib/runner.ts` - deterministic lane and collision logic
-- `tests/` - gameplay tests
-- `docs/` - protocol architecture and testnet runbook
+- `app/` - Next.js interface and proof-builder API route
+- `components/ProofopolisGame.tsx` - primary city-building experience
+- `components/Building.tsx` - city tile visuals
+- `contracts/src/Proofopolis.sol` - Attestcoin verification, replay protection, tile issuance and placement
+- `contracts/src/SeedActions.sol` - simple Sepolia actions used for a deterministic testnet demo
+- `lib/game.ts` - deterministic board and scoring helpers
+- `tests/` - gameplay and verification-support tests
+- `docs/` - Attestcoin integration and architecture notes
 
-## Status
+## Demo safety
 
-Hackathon testnet prototype. Not audited; no real-value assets.
-
+Proofopolis is a hackathon testnet prototype. It is not audited and does not use real-value assets.
