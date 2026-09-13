@@ -1,18 +1,15 @@
-Exit code: 0
-Wall time: 0.8 seconds
-Output:
 # Proofopolis
 
 **Your wallet is your deck.** Proofopolis is an isometric city-building puzzle where players turn Attestcoin-verified Ethereum activity into strategic building tiles on Creditcoin.
 
-Built for **BUIDL CTC 2026 Fall Â· Gaming Track**.
+Built for **BUIDL CTC 2026 Fall · Gaming Track**.
 
 ## Playable loop
 
 1. Prove a successful Ethereum Sepolia game action.
 2. Attestcoin verifies inclusion and continuity on Creditcoin CC3.
 3. The source event unlocks a Market, Gallery, or Council tile.
-4. Place it on the 5Ã—5 city board; adjacent landmarks earn bonuses.
+4. Place it on the 5×5 city board; adjacent landmarks earn bonuses.
 5. Every transaction can be consumed only once.
 
 The deployed web demo includes a fast judge-friendly proof simulation and a live Sepolia proof importer. The simulation is clearly labelled and never substitutes for the production contract path.
@@ -43,14 +40,13 @@ Copy `.env.example` to `.env.local` to configure infrastructure and the deployed
 
 ## Project structure
 
-- `app/` â€” Next.js game and proof-builder endpoint
-- `components/` â€” playable isometric city interface
-- `contracts/src/` â€” Sepolia source and CC3 game contracts
-- `lib/` â€” deterministic game/scoring logic and contract ABI
-- `tests/` â€” gameplay tests
-- `docs/` â€” protocol architecture and runbook
+- `app/` — Next.js game and proof-builder endpoint
+- `components/` — playable isometric city interface
+- `contracts/src/` — Sepolia source and CC3 game contracts
+- `lib/` — deterministic game/scoring logic and contract ABI
+- `tests/` — gameplay tests
+- `docs/` — protocol architecture and runbook
 
 ## Status
 
 Hackathon testnet prototype. Not audited; no real-value assets.
-
