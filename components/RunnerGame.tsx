@@ -17,7 +17,7 @@ function Home({ play }: { play: () => void }) {
     <main className="runner-home">
       <Image src={HERO} fill priority sizes="100vw" alt="A floating proof-powered city" className="runner-home__art" />
       <div className="runner-home__shade" />
-      <nav><Logo /><span className="live-chip"><i /> LIVE ON CC3 TESTNET</span></nav>
+      <nav><Logo /><span className="live-chip"><i /> BUILT FOR CC3 TESTNET</span></nav>
       <section className="runner-home__copy">
         <p className="runner-eyebrow">A FAST ARCADE RUNNER POWERED BY ATTESTCOIN</p>
         <h1>RUN THE CHAIN.<br /><em>BUILD THE CITY.</em></h1>
@@ -161,7 +161,7 @@ export default function RunnerGame() {
     <main className="runner-game"><section className="result-card result-card--bad"><span>!</span><p>BLOCK CORRUPTED</p><h1>Run ended at {distance}m</h1><small>You collected {shards} proof shard{shards === 1 ? "" : "s"}.</small><button className="runner-cta" onClick={() => { resetRun(); setScene("countdown"); setCount(1); later(() => setScene("running"), 700); }}>RUN AGAIN</button><button className="back-link" onClick={() => setScene("home")}>Main menu</button></section></main>
   );
   if (scene === "reward") return (
-    <main className="reward-page"><Logo /><section className="result-card result-card--win"><span className="reward-building">&#9814;</span><p>RUN VERIFIED</p><h1>Nexus Tower unlocked!</h1><small>{TARGET_DISTANCE}m cleared &middot; {shards} shards collected &middot; Attestcoin proof consumed once</small><div className="reward-score"><b>{TARGET_DISTANCE + shards * 50}</b><span>CITY INFLUENCE</span></div><button className="runner-cta" onClick={() => setScene("home")}>PLACE BUILDING &amp; PLAY AGAIN</button></section></main>
+    <main className="reward-page"><Logo /><section className="result-card result-card--win"><span className="reward-building">&#9814;</span><p>RUN VERIFIED</p><h1>Nexus Tower unlocked!</h1><small>{TARGET_DISTANCE}m cleared &middot; {shards} shards collected &middot; demo proof consumed once</small><div className="reward-score"><b>{TARGET_DISTANCE + shards * 50}</b><span>CITY INFLUENCE</span></div><button className="runner-cta" onClick={() => setScene("home")}>PLACE BUILDING &amp; PLAY AGAIN</button></section></main>
   );
 
   return (
