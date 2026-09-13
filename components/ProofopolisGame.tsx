@@ -22,7 +22,7 @@ type Notice = { id: number; tone: "success" | "danger" | "info"; text: string } 
 const STAGES: Array<{ stage: ProofStage; label: string; detail: string }> = [
   { stage: "requesting", label: "Reading Ethereum", detail: "Locating transaction and receipt" },
   { stage: "attested", label: "Attestation found", detail: "Continuity root anchored on Creditcoin" },
-  { stage: "verifying", label: "Verifying proof", detail: "Native verifier 0x…0FD2 is checking inclusion" },
+  { stage: "verifying", label: "Verifying proof", detail: "Native verifier 0xâ€¦0FD2 is checking inclusion" },
   { stage: "minted", label: "Building unlocked", detail: "Proof consumed once; tile ready to place" },
 ];
 
@@ -63,7 +63,7 @@ function Landing({ onEnter }: { onEnter: () => void }) {
     <main className="landing">
       <Image
         className="landing__art"
-        src="/proofopolis-hero.webp"
+        src="https://raw.githubusercontent.com/fawazfff/proofopolis/main/public/proofopolis-hero.webp"
         alt="A floating city connected to a glowing cryptographic portal"
         fill
         priority
@@ -78,7 +78,7 @@ function Landing({ onEnter }: { onEnter: () => void }) {
         <div className="network-pill"><i /> CC3 TESTNET</div>
       </nav>
       <section className="landing__copy" id="top">
-        <p className="kicker"><span>◆</span> Powered by Attestcoin Protocol</p>
+        <p className="kicker"><span>â—†</span> Powered by Attestcoin Protocol</p>
         <h1>Your history.<br /><em>Your city.</em></h1>
         <p className="landing__lede">
           Turn verified Ethereum activity into a living strategy world on Creditcoin. Every building
@@ -86,7 +86,7 @@ function Landing({ onEnter }: { onEnter: () => void }) {
         </p>
         <div className="landing__actions">
           <button className="button button--primary button--large" onClick={onEnter}>
-            Enter your city <span>→</span>
+            Enter your city <span>â†’</span>
           </button>
           <a className="button button--glass" href="#how-it-works">How it works</a>
         </div>
@@ -99,7 +99,7 @@ function Landing({ onEnter }: { onEnter: () => void }) {
         </div>
       </section>
       <section className="landing__how" id="how-it-works">
-        <span>ETHEREUM</span><i>→</i><b>ATTESTCOIN PROOF</b><i>→</i><span>CREDITCOIN CITY</span>
+        <span>ETHEREUM</span><i>â†’</i><b>ATTESTCOIN PROOF</b><i>â†’</i><span>CREDITCOIN CITY</span>
       </section>
     </main>
   );
@@ -144,8 +144,8 @@ export default function ProofopolisGame() {
   const [liveError, setLiveError] = useState("");
   const [showImport, setShowImport] = useState(false);
   const [proofLog, setProofLog] = useState([
-    { label: "Verifier online", value: "0x…0FD2", tone: "cyan" },
-    { label: "Source chain", value: "Sepolia · key 1", tone: "violet" },
+    { label: "Verifier online", value: "0xâ€¦0FD2", tone: "cyan" },
+    { label: "Source chain", value: "Sepolia Â· key 1", tone: "violet" },
   ]);
   const { notice, show } = useNotice();
 
@@ -212,7 +212,7 @@ export default function ProofopolisGame() {
     setHand((current) => current.filter((tile) => tile.id !== selected.id));
     setSelectedId("");
     setStage("idle");
-    show("success", `District expanded · +${earned} influence`);
+    show("success", `District expanded Â· +${earned} influence`);
   }
 
   async function importLiveProof(event: React.FormEvent) {
@@ -281,7 +281,7 @@ export default function ProofopolisGame() {
           <span className="network-pill"><i /> CC3 TESTNET</span>
         </div>
         <button className="wallet-button" onClick={connectWallet}>
-          <span className="wallet-button__gem">◇</span>
+          <span className="wallet-button__gem">â—‡</span>
           {wallet ? shortenHash(wallet) : "Connect wallet"}
         </button>
       </header>
@@ -289,9 +289,9 @@ export default function ProofopolisGame() {
       <section className="game-layout">
         <aside className="side-panel profile-panel">
           <p className="panel-label">CITY PASSPORT</p>
-          <div className="passport-orb"><span>◇</span></div>
+          <div className="passport-orb"><span>â—‡</span></div>
           <h2>{wallet ? `${shortenHash(wallet, 8, 5)}'s City` : <>Founder&apos;s Reach</>}</h2>
-          <p className="passport-rank">Genesis settlement · Rank #{1247 - board.length * 83}</p>
+          <p className="passport-rank">Genesis settlement Â· Rank #{1247 - board.length * 83}</p>
           <div className="level-row"><span>LEVEL {1 + Math.floor(score / 180)}</span><b>{Math.min(score, 180)} / 180 XP</b></div>
           <div className="progress"><span style={{ width: `${Math.min(100, (score / 180) * 100)}%` }} /></div>
           <div className="city-stats">
@@ -308,13 +308,13 @@ export default function ProofopolisGame() {
               </div>
             ))}
           </div>
-          <button className="text-button" onClick={testForgery}>Test a forged proof <span>↗</span></button>
+          <button className="text-button" onClick={testForgery}>Test a forged proof <span>â†—</span></button>
         </aside>
 
         <section className="city-stage">
           <div className="city-stage__header">
             <div><p className="panel-label">YOUR PROVEN WORLD</p><h1>Founder&apos;s Reach</h1></div>
-            <div className="score-chip"><span>◆</span><b>{score.toLocaleString()}</b><small>CITY SCORE</small></div>
+            <div className="score-chip"><span>â—†</span><b>{score.toLocaleString()}</b><small>CITY SCORE</small></div>
           </div>
           <div className="sky-glow sky-glow--one" />
           <div className="sky-glow sky-glow--two" />
@@ -329,11 +329,11 @@ export default function ProofopolisGame() {
               })}
             </div>
           </div>
-          <div className="city-stage__tip"><span>✦</span>{selected ? "Choose a glowing plot to place your proven building" : "Import a proof to unlock your next building"}</div>
+          <div className="city-stage__tip"><span>âœ¦</span>{selected ? "Choose a glowing plot to place your proven building" : "Import a proof to unlock your next building"}</div>
 
           {(stage === "requesting" || stage === "attested" || stage === "verifying" || stage === "rejected") && (
             <div className={`verification-orbit${stage === "rejected" ? " verification-orbit--rejected" : ""}`}>
-              <div className="verification-orbit__rings"><span /><span /><b>{stage === "rejected" ? "×" : "◆"}</b></div>
+              <div className="verification-orbit__rings"><span /><span /><b>{stage === "rejected" ? "Ã—" : "â—†"}</b></div>
               <p>{stage === "rejected" ? "PROOF REJECTED" : STAGES[Math.max(0, activeStage)]?.label.toUpperCase()}</p>
               <small>{stage === "rejected" ? "Tampered data cannot alter the city" : STAGES[Math.max(0, activeStage)]?.detail}</small>
             </div>
@@ -345,14 +345,14 @@ export default function ProofopolisGame() {
           <h2>Turn history<br />into landmarks.</h2>
           <p className="forge-panel__lede">Attestcoin verifies your Ethereum transaction before Creditcoin unlocks a tile.</p>
           <div className="route-map">
-            <div><span className="chain-icon chain-icon--eth">◇</span><b>Ethereum</b><small>Source transaction</small></div>
+            <div><span className="chain-icon chain-icon--eth">â—‡</span><b>Ethereum</b><small>Source transaction</small></div>
             <i><span /></i>
-            <div className="route-map__active"><span className="chain-icon chain-icon--proof">◆</span><b>Attestcoin</b><small>Inclusion + continuity</small></div>
+            <div className="route-map__active"><span className="chain-icon chain-icon--proof">â—†</span><b>Attestcoin</b><small>Inclusion + continuity</small></div>
             <i><span /></i>
             <div><span className="chain-icon chain-icon--ctc">C</span><b>Creditcoin</b><small>Playable city state</small></div>
           </div>
           <button className="button button--primary forge-button" onClick={runDemoProof} disabled={["requesting", "attested", "verifying"].includes(stage)}>
-            <span>✦</span> Verify demo proof
+            <span>âœ¦</span> Verify demo proof
           </button>
           <button className="button button--outline forge-button" onClick={() => setShowImport((open) => !open)}>
             Import Sepolia transaction
@@ -361,7 +361,7 @@ export default function ProofopolisGame() {
           {showImport && (
             <form className="import-form" onSubmit={importLiveProof}>
               <label htmlFor="txHash">Transaction hash</label>
-              <input id="txHash" value={txHash} onChange={(event) => setTxHash(event.target.value)} placeholder="0x…" spellCheck={false} />
+              <input id="txHash" value={txHash} onChange={(event) => setTxHash(event.target.value)} placeholder="0xâ€¦" spellCheck={false} />
               {liveError && <p>{liveError}</p>}
               <button className="button button--primary" type="submit">Build proof</button>
             </form>
@@ -370,7 +370,7 @@ export default function ProofopolisGame() {
           <div className="hand-header"><p className="panel-label">BUILDING HAND</p><span>{hand.length} READY</span></div>
           <div className="tile-hand">
             {hand.length === 0 ? (
-              <div className="empty-hand"><span>◇</span><p>Your next verified landmark will appear here.</p></div>
+              <div className="empty-hand"><span>â—‡</span><p>Your next verified landmark will appear here.</p></div>
             ) : hand.map((tile) => (
               <button key={tile.id} className={`tile-card${selectedId === tile.id ? " tile-card--selected" : ""}`} onClick={() => setSelectedId(tile.id)}>
                 <Building kind={tile.kind} compact />
@@ -378,7 +378,7 @@ export default function ProofopolisGame() {
               </button>
             ))}
           </div>
-          <div className="security-note"><span>✓</span><p><b>Replay protected</b><small>Each source transaction can unlock exactly one building.</small></p></div>
+          <div className="security-note"><span>âœ“</span><p><b>Replay protected</b><small>Each source transaction can unlock exactly one building.</small></p></div>
         </aside>
       </section>
 
